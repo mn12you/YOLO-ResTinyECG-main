@@ -1,3 +1,4 @@
 data/*
 !data/.gitkeep
 !data/gen_txt.py
+!data/val_split.py
