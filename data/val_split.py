@@ -5,6 +5,9 @@ ratio=0.2
 with open('data/AHA_10s_rev/val.txt', 'r') as file:
     lines = file.readlines()
 
+with open('data/AHA_10s_rev/all.txt', 'w') as file:
+    file.writelines(lines)
+
 # Shuffle the rows
 random.shuffle(lines)
 
