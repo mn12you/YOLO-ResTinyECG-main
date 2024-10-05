@@ -1,0 +1,12 @@
+pip install torchsummary
+pip install torchstat
+pip install onnx
+pip install onnx_tf
+pip install tensorflow
+pip install tensorflow_probability
+pip install onnxsim
+
+git clone https://github.com/alibaba/TinyNeuralNetwork.git
+cd TinyNeuralNetwork
+python setup.py install
+pip install git+https://github.com/alibaba/TinyNeuralNetwork.git

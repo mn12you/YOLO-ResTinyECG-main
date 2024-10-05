@@ -1,0 +1,48 @@
+cd C:\Users\Iris\Desktop\Diana_HelpRunYolo
+conda activate yolo_torch
+
+#!/bin/bash
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Se_S05_10.data 
+
+
+
+
+#!/bin/bash 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Re_1.data 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Re_L_1.data 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Re_S_1.data 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Re_L05_1.data 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Re_S05_1.data 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Re_SL_1.data 
+
+#!/bin/bash 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Re160_1.data 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Re160_L_1.data 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Re160_S_1.data 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Re160_L05_1.data 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Re160_S05_1.data 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Re160_SL_1.data 
+
+#!/bin/bash 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Se_1.data 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Se_L_1.data 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Se_S_1.data 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Se_L05_1.data 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Se_S05_1.data 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Se_SL_1.data 
+
+#!/bin/bash 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Se160_1.data 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Se160_L_1.data 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Se160_S_1.data 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Se160_L05_1.data 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Se160_S05_1.data 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Se160_SL_1.data 
+
+#!/bin/bash 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Sh_1.data 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Sh_L_1.data 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Sh_S_1.data 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Sh_L05_1.data 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Sh_S05_1.data 
+python train.py --data ./data/8class_20s/QRS_AAMI_8_20s_Sh_SL_1.data 
