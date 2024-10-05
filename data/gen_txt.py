@@ -1,7 +1,7 @@
 import os
 
 # Get the current working directory
-directory = './data/AHA_10s_rev/val'
+directory = './data/INCART_10s/val'
 file_paths=[]
 # Get a list of all files and directories in the current folder
 for dirpath, dirnames,files_in_directory in os.walk(directory):
@@ -10,7 +10,7 @@ for dirpath, dirnames,files_in_directory in os.walk(directory):
     file_paths = file_paths+[os.path.join(dirpath[2:], file) for file in files_in_directory if file.endswith('.png') ]
 
 # Specify the output text file
-output_file = 'val.txt'
+output_file = './data/INCART_10s/val.txt'
 
 # Write the file paths to the output text file
 with open(output_file, 'w') as f:

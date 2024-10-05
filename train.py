@@ -11,7 +11,7 @@ from torch import optim
 from torch.utils.data import dataset
 from numpy.core.fromnumeric import shape
 
-# from torchsummary import summary
+from torchsummary import summary
 
 import utils.loss
 import utils.utils
@@ -124,16 +124,20 @@ if __name__ == '__main__':
         load_param = True
 
     # 初始化模型结构
-    model = model.detector.Detector(cfg["classes"], cfg["anchor_num"], cfg["backbone"], load_param, imggray = imggray, quantize = False).to(device)
+    model = model.detector.Detector(6, cfg["anchor_num"], cfg["backbone"], load_param, imggray = imggray, quantize = False).to(device)
     # summary(model, input_size=(convGray, cfg["height"], cfg["width"]))
 
 
-    # 加载预训练模型参数
+ # 加载预训练模型参数
     if load_param == True:
         model.load_state_dict(torch.load(premodel_path, map_location=device), strict = False)
-        print("Load finefune model param: %s" % premodel_path)
+        print(f"Loaded fine-tuned model parameters: {premodel_path}")
+
+        # Modify the final classification layer to output 5 classes instead of 6
+        model.output_cls_layers = torch.nn.Conv2d(model.output_cls_layers.in_channels, 5, 1, 1, 0, bias=True).to(device)
     else:
         print("Initialize weights: model/backbone/backbone.pth")
+
 
     # 构建SGD优化器
     optimizer = optim.SGD(params=model.parameters(),
