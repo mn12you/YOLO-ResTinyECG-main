@@ -1,7 +1,7 @@
 import os
 
 # Get the current working directory
-directory = './data/INCART_10s/val'
+directory = './data/AHA_10s_rev/val'
 file_paths=[]
 # Get a list of all files and directories in the current folder
 for dirpath, dirnames,files_in_directory in os.walk(directory):
