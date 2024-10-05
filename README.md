@@ -18,4 +18,4 @@ python evaluation.py --data data/INCART_10s/INCART_10s.data --weights weights\QR
 
 4. save the evaluation result
 copy the final output of the terminal like the following:
-![alt text](https://github.com/mn12you/YOLO-ResTinyECG-main/blob/master/result_sample.PNGs?raw=true)
+![alt text](https://github.com/mn12you/YOLO-ResTinyECG-main/blob/master/result_samle.PNG?raw=true)
