@@ -131,30 +131,10 @@ if __name__ == '__main__':
 
  # 加载预训练模型参数
     if load_param == True:
-        checkpoint = torch.load(premodel_path, map_location=device)
-    
-        # Remove the output_cls_layers parameters (since they are for 6 classes, and we need 5)
-        checkpoint['output_cls_layers.weight'] = model.output_cls_layers.weight
-        checkpoint['output_cls_layers.bias'] = model.output_cls_layers.bias
-        
-        # Load the modified checkpoint into the model
-        model.load_state_dict(checkpoint, strict=False)
+        model.load_state_dict(torch.load(premodel_path, map_location=device), strict = False)
         print(f"Loaded fine-tuned model parameters: {premodel_path}")
-        
-        # Modify the final classification layer to output 5 classes
-        model.output_cls_layers = torch.nn.Conv2d(model.output_cls_layers.in_channels, cfg['classes'], 1, 1, 0, bias=True).to(device)
-
-        # Freeze backbone layers
-        for param in model.backbone.parameters():
-            param.requires_grad = False
-
-        print("Backbone layers frozen, only classification layers will be trained.")
     else:
         print("Initialize weights: model/backbone/backbone.pth")
-        
-    # Freeze the backbone layers
-    for param in model.backbone.parameters():
-        param.requires_grad = False
 
     # 构建SGD优化器
     optimizer = optim.SGD(params=model.parameters(),
