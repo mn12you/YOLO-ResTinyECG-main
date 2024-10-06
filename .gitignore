@@ -2,3 +2,5 @@ data/*
 !data/.gitkeep
 !data/gen_txt.py
 !data/val_split.py
+weights/*
+!weights/QRS_AAMI_10s_Re-59-epoch-0.944722ap-model.pth
