@@ -11,7 +11,7 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "args": [
-                 "--data", "data/INCART_10s.data", "--weights", "weights/QRS_AAMI_10s_Re-59-epoch-0.944722ap-model.pth"
+                 "--data", "data/INCART_10s/INCART_10s.data"
             ]
         }
     ]

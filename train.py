@@ -124,20 +124,33 @@ if __name__ == '__main__':
         load_param = True
 
     # 初始化模型结构
-    model = model.detector.Detector(6, cfg["anchor_num"], cfg["backbone"], load_param, imggray = imggray, quantize = False).to(device)
-    # summary(model, input_size=(convGray, cfg["height"], cfg["width"]))
+    model = model.detector.Detector(cfg["classes"], cfg["anchor_num"], cfg["backbone"], load_param, imggray = imggray, quantize = False).to(device)
+    model_state5 = model.state_dict()
+    summary(model, input_size=(convGray, cfg["height"], cfg["width"]))
 
 
  # 加载预训练模型参数
     if load_param == True:
-        model.load_state_dict(torch.load(premodel_path, map_location=device), strict = False)
+        # Modify the final classification layer to output 5 classes instead of 6
+        # model.output_cls_layers = torch.nn.Conv2d(model.output_cls_layers.in_channels, 5, 1, 1, 0, bias=True).to(device)
+        model_state6=torch.load(premodel_path, map_location=device)
+        model_state6['output_cls_layers.bias']=model_state5['output_cls_layers.bias']
+        model_state6['output_cls_layers.weight']=model_state5['output_cls_layers.weight']
+
+        model.load_state_dict(model_state6, strict = False)
         print(f"Loaded fine-tuned model parameters: {premodel_path}")
 
-        # Modify the final classification layer to output 5 classes instead of 6
-        model.output_cls_layers = torch.nn.Conv2d(model.output_cls_layers.in_channels, 5, 1, 1, 0, bias=True).to(device)
+
+        # # Initialize the new output layer
+        # torch.nn.init.xavier_uniform_(model.output_cls_layers.weight)  # Or any other initialization method
+        # torch.nn.init.zeros_(model.output_cls_layers.bias)
+
+
     else:
         print("Initialize weights: model/backbone/backbone.pth")
-
+    # Freeze the backbone layers
+    for param in model.backbone.parameters():
+        param.requires_grad = False
 
     # 构建SGD优化器
     optimizer = optim.SGD(params=model.parameters(),
